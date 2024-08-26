@@ -10,19 +10,24 @@
 
 const sucesionFibonacci = ( cantidadNumeros ) => {
 
-    if ( cantidadNumeros < 0 ) return false;
-
-    let a = 0; 
-    let b = 1; 
+    if ( cantidadNumeros < 0 ) return console.log(0);
+    
+    let anterior = 0;
+    let actual = 1;
 
     for (let i = 0; i < cantidadNumeros; i++) {
         
-        console.log(j);
-        j = (i + j); 
+        console.log(`${ i + 1 }_:  ${anterior}`);
         
+        let temp = anterior; 
+        anterior = actual + anterior; 
+        actual = temp; 
 
     }
 
+
 }
+
+
 
 sucesionFibonacci( 50 );
