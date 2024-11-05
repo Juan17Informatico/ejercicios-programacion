@@ -19,6 +19,16 @@
  */
 const eliminandoCaracteres = ( str1, str2 ) => {
 
- 
+    if( str1.trim() === str2.trim() ) return `Cadenas de texto iguales: Cadena 1: ${str1} Cadena 2: ${str2}`;
+
+    const str1Unique = [...new Set(str1)];
+    const str2Unique = [...new Set(str2)];
+
+    const out1 = str1Unique.filter( char  => !str2Unique.includes(char)).join('');
+    const out2 = str2Unique.filter( char  => !str1Unique.includes(char)).join('');
+    
+    return { out1, out2 }
 
 }
+
+console.log(eliminandoCaracteres('cadena similar', 'cadena diferente'));
