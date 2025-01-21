@@ -15,7 +15,59 @@
  * @param {Array} matriz del juego por el usuario
  */
 const tresEnRaya = (matriz) => {
- 
-    if ( Array.isArray(matriz) ) {}
-    
-}
+
+    if ((matriz[0].length !== 3) || (matriz[1].length !== 3) || (matriz[2].length !== 3)) 
+        return "Nulo";
+
+    const arrayDeResultado = [ ...matriz[0], ...matriz[1], ...matriz[2] ];
+
+    const combinacionesGanadoras = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
+
+    const resultado = [];
+
+    combinacionesGanadoras.forEach((combinacion) => {
+        const [ a, b, c ] = combinacion;
+        
+        console.log(arrayDeResultado[a], arrayDeResultado[b],
+            arrayDeResultado[c]);
+        
+
+        if( 
+            arrayDeResultado[a] !== " " &&
+            arrayDeResultado[a] === arrayDeResultado[b] &&
+            arrayDeResultado[a] === arrayDeResultado[c]
+        ){
+            resultado.push(arrayDeResultado[a]);
+        }
+
+    });
+
+    return resultado;
+
+};
+
+console.log(
+    "Gana O:" +
+    tresEnRaya([
+        ["x", "x", "o"],
+        ["x", "o", " "],
+        ["o", " ", " "],
+    ])
+);
+console.log(
+    "Gana x:" +
+    tresEnRaya([
+        ["x", "x", "o"],
+        ["x", "o", "o"],
+        ["o", "o", "x"],
+    ])
+);
