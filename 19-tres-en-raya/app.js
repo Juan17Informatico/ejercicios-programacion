@@ -36,10 +36,6 @@ const tresEnRaya = (matriz) => {
 
     combinacionesGanadoras.forEach((combinacion) => {
         const [ a, b, c ] = combinacion;
-        
-        console.log(arrayDeResultado[a], arrayDeResultado[b],
-            arrayDeResultado[c]);
-        
 
         if( 
             arrayDeResultado[a] !== " " &&
@@ -51,12 +47,24 @@ const tresEnRaya = (matriz) => {
 
     });
 
-    return resultado;
+    if ( resultado.includes('x') && resultado.includes('o')){
+        return 'Nulo';
+    }
+
+    if (resultado.length === 0) {
+        return 'Empate';
+    }
+
+    if(resultado.length > 0){
+        return resultado[0].toUpperCase();
+    }
+
+    return 'Nulo';
 
 };
 
 console.log(
-    "Gana O:" +
+    "Gana O: " +
     tresEnRaya([
         ["x", "x", "o"],
         ["x", "o", " "],
@@ -64,10 +72,26 @@ console.log(
     ])
 );
 console.log(
-    "Gana x:" +
+    "Gana x: " +
     tresEnRaya([
-        ["x", "x", "o"],
+        ["x", "x", "x"],
         ["x", "o", "o"],
         ["o", "o", "x"],
+    ])
+);
+
+console.log(
+    tresEnRaya([
+        ["o", "o", "x"],
+        ["x", "x", "o"],
+        ["o", "o", "x"],
+    ])
+);
+
+console.log(
+    tresEnRaya([
+        ["o", "o", "o"],
+        ["x", "x", "x"],
+        [" ", " ", ""],
     ])
 );
